@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 '''
-    app for registering blueprint and starting flask
+ the app that register the blueprint
 '''
 from flask import Flask, make_response, jsonify
 from flask_cors import CORS
@@ -17,7 +17,7 @@ app.register_blueprint(app_views)
 @app.teardown_appcontext
 def tear_down(self):
     '''
-    close query after each session
+    close query
     '''
     storage.close()
 
@@ -25,7 +25,7 @@ def tear_down(self):
 @app.errorhandler(404)
 def not_found(error):
     '''
-    return JSON formatted 404 status code response
+    return JSON formatted code
     '''
     return make_response(jsonify({'error': 'Not found'}), 404)
 
